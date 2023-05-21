@@ -44,4 +44,9 @@ export const getAPIs = {
         path: "/api/report/requestAI/",
         method: "POST",
     },
+    savePreset: {
+        name: "savePreset",
+        path: "/api/report/savePreset",
+        method: "POST"
+    }
 };

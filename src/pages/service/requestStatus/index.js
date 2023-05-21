@@ -34,7 +34,11 @@ const RequestStatus = () => {
     const receiveMessage = (message) => {
         const msg = message.message
         if (msg.slice(0, 3) !== "/ai") return
-        const data = { ...message, message: msg.slice(4, msg.length), roomID: id }
+        const data = {
+            message: msg.slice(4, msg.length),
+            roomID: id,
+            fromUser: message.fromUser
+        }
         dispatch(getAPIActionJSON("requestAI", data, () => { }, null, (e) => handleResponse(e), "", false))
     }
     let sharedLinks = [];
@@ -71,8 +75,8 @@ const RequestStatus = () => {
         }
     }, [])
     const myMeeting = async (element) => {
-        const appID = 1602752122
-        const serverSecret = "7d8e0699a05fdca3008039e54ac36e80"
+        const appID = 2011609377
+        const serverSecret = "5c319edc0bc879c3db316938af3a010a"
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
             appID,
             serverSecret,

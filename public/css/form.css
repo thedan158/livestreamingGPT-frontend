@@ -49,6 +49,10 @@
 .fu-btn:hover {
   opacity: 0.7;
 }
+textarea.fi-input {
+	min-height: 150px;
+	resize: vertical;
+}
 
 /* === Options ===*/
 

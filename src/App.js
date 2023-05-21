@@ -12,6 +12,7 @@ import PageLoader from "./components/common/pageLoader";
 import RequestStatus from "./pages/service/requestStatus";
 import ChangePassword from "./pages/change-password";
 import { useEffect } from "react";
+import LivestreamSetup from "./pages/livestream-setup";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/addIDCard" element={<IdCardRepublish />} />
           <Route path="/livestream" element={<RequestStatus />} />
           <Route path="/changePassword" element={<ChangePassword />} />
+          <Route path="/livestream-setup" element={<LivestreamSetup />} />
         </Routes>
       </BrowserRouter>
       <PageLoader />

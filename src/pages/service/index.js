@@ -6,8 +6,12 @@ import { generateRandomString } from "../../components/common/commonFunctions";
 export default function ServicePage() {
     const navigate = useNavigate()
     const [serviceType, setServiceType] = useState(null)
-    const [docType, setDocType] = useState(null)
+    const [isAISupported, setIsAISupported] = useState(null)
     const handleNext = () => {
+        if (isAISupported) {
+            navigate(`/livestream-setup`)
+            return
+        }
         const roomId = generateRandomString()
         navigate(`/livestream?id=${roomId}&role=Host`)
     }
@@ -40,8 +44,8 @@ export default function ServicePage() {
                         <p><b>Do you want to use AI to support your livestream ?</b></p>
                     </div>
                     <div class="form-row fr-option">
-                        <div onClick={() => setDocType('IDCard')} class={docType === "IDCard" ? "fr-btn active" : "fr-btn"} id="AccdInvest">Yes</div>
-                        <div onClick={() => setDocType('Driver')} class={docType === "Driver" ? "fr-btn active" : "fr-btn"} id="nonAccdInvest">No</div>
+                        <div onClick={() => setIsAISupported(true)} class={isAISupported === true ? "fr-btn active" : "fr-btn"} id="AccdInvest">Yes</div>
+                        <div onClick={() => setIsAISupported(false)} class={isAISupported === false ? "fr-btn active" : "fr-btn"} id="nonAccdInvest">No</div>
                     </div>
                 </div>}
 
@@ -56,7 +60,7 @@ export default function ServicePage() {
                             <a class="fr-btn fr-back" id="btn-kyc00" onClick={() => navigate('/dashboard')}>BACK</a>
                         </div>
                         <div class="fn-col">
-                            <a onClick={handleNext} class={docType !== null ? "fr-btn fr-next" : "fr-btn fr-next inactive"} id="btn-kycA1">NEXT</a>
+                            <a onClick={handleNext} class={isAISupported !== null ? "fr-btn fr-next" : "fr-btn fr-next inactive"} id="btn-kycA1">NEXT</a>
                         </div>
                     </div>
                 </div>
